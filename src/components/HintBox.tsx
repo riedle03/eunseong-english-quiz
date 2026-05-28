@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import type { WordEntry } from '../types'
 
 interface Props {
@@ -7,9 +8,13 @@ interface Props {
 
 export function HintBox({ wordEntry, revealed }: Props) {
   const parts = wordEntry.sentence.split('___')
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   function playAudio() {
-    new Audio(`/audio/${wordEntry.word.toLowerCase()}.mp3`).play().catch(() => {})
+    audioRef.current?.pause()
+    const a = new Audio(`/audio/${wordEntry.word.toLowerCase()}.mp3`)
+    audioRef.current = a
+    a.play().catch(() => {})
   }
 
   return (
@@ -28,6 +33,7 @@ export function HintBox({ wordEntry, revealed }: Props) {
       <button
         onClick={playAudio}
         className="mt-3 px-4 py-1 text-sm bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full transition-colors"
+        aria-label="발음 듣기"
         title="발음 듣기"
       >
         🔊 듣기
