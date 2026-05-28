@@ -64,6 +64,20 @@ export function Game({ topics, onHome }: Props) {
 
       <main className="flex-1 flex flex-col items-center gap-4 py-4 px-2 pb-6">
         <HintBox wordEntry={wordEntry} revealed={game.status !== 'playing'} />
+        <div className="flex gap-3 text-xs text-gray-600">
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-4 h-4 rounded bg-correct" />
+            정확한 위치
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-4 h-4 rounded bg-present" />
+            위치 틀림
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="inline-block w-4 h-4 rounded bg-absent" />
+            없는 글자
+          </span>
+        </div>
         <GameBoard
           wordLength={wordEntry.word.length}
           guesses={game.guesses}
