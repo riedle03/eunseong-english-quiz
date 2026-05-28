@@ -7,6 +7,11 @@ interface Props {
 
 export function HintBox({ wordEntry, revealed }: Props) {
   const parts = wordEntry.sentence.split('___')
+
+  function playAudio() {
+    new Audio(`/audio/${wordEntry.word.toLowerCase()}.mp3`).play().catch(() => {})
+  }
+
   return (
     <div className="bg-white rounded-2xl shadow-md p-4 text-center w-full max-w-sm mx-auto">
       <div className="text-5xl mb-2">{wordEntry.emoji}</div>
@@ -20,8 +25,18 @@ export function HintBox({ wordEntry, revealed }: Props) {
         )}
         {parts[1]}
       </p>
+      <button
+        onClick={playAudio}
+        className="mt-3 px-4 py-1 text-sm bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full transition-colors"
+        title="발음 듣기"
+      >
+        🔊 듣기
+      </button>
       {revealed && (
-        <p className="mt-2 text-base font-semibold text-gray-800">{wordEntry.korean}</p>
+        <>
+          <p className="mt-2 text-xs text-gray-500 italic">{wordEntry.sentenceKorean}</p>
+          <p className="mt-1 text-base font-semibold text-gray-800">{wordEntry.korean}</p>
+        </>
       )}
     </div>
   )
