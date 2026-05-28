@@ -22,16 +22,16 @@ export function Game({ topics, onHome }: Props) {
   const [shake, setShake] = useState(false)
   const game = useGame(wordEntry)
 
-  // Increment daily streak on win + play result sound
+  // Increment daily streak on win + play result/guess sound
   useEffect(() => {
     if (game.status === 'won') {
       const key = todayKey()
       localStorage.setItem(key, String(Number(localStorage.getItem(key) ?? 0) + 1))
       playCorrect()
-    } else if (game.status === 'lost') {
+    } else if (game.guesses.length > 0) {
       playWrong()
     }
-  }, [game.status])
+  }, [game.status, game.guesses.length])
 
   const handleSubmit = useCallback(() => {
     if (game.currentGuess.length !== wordEntry.word.length) {
