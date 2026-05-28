@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import type { GameStatus, WordEntry } from '../types'
 
 interface Props {
@@ -8,6 +9,14 @@ interface Props {
 }
 
 export function ResultModal({ status, wordEntry, attempts, onNext }: Props) {
+  const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (status === 'playing') return
+    const audio = new Audio(`/audio/${wordEntry.word.toLowerCase()}.mp3`)
+    audio.play().catch(() => {})
+  }, [status, wordEntry.word])
+
   if (status === 'playing') return null
 
   const won = status === 'won'
@@ -18,6 +27,8 @@ export function ResultModal({ status, wordEntry, attempts, onNext }: Props) {
       ? `은성이 영어퀴즈 🎉\n${wordEntry.word} (${wordEntry.korean})\n${attempts}/6번 만에 맞췄어!`
       : `은성이 영어퀴즈 😢\n정답은 "${wordEntry.word}" (${wordEntry.korean}) 였어!`
     navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -29,7 +40,8 @@ export function ResultModal({ status, wordEntry, attempts, onNext }: Props) {
         <p className="text-base text-gray-500 mb-4">{wordEntry.korean} {wordEntry.emoji}</p>
 
         <div className="bg-gray-50 rounded-xl p-3 text-sm text-gray-700 mb-4 text-left">
-          <span className="font-semibold">예문: </span>{filledSentence}
+          <p><span className="font-semibold">예문: </span>{filledSentence}</p>
+          <p className="mt-1 text-xs text-gray-500 italic">{wordEntry.sentenceKorean}</p>
         </div>
 
         {won && (
@@ -48,7 +60,7 @@ export function ResultModal({ status, wordEntry, attempts, onNext }: Props) {
             className="px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-xl transition-colors"
             title="결과 클립보드 복사"
           >
-            📤
+            {copied ? '복사됨 ✓' : '📤'}
           </button>
         </div>
       </div>
