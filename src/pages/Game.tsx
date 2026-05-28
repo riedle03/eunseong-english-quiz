@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useGame } from '../hooks/useGame'
 import { getRandomWord, getKeyboardState } from '../utils/wordUtils'
+import { playTypeClick, playCorrect, playWrong } from '../utils/sounds'
 import { HintBox } from '../components/HintBox'
 import { GameBoard } from '../components/GameBoard'
 import { Keyboard } from '../components/Keyboard'
@@ -21,11 +22,14 @@ export function Game({ topics, onHome }: Props) {
   const [shake, setShake] = useState(false)
   const game = useGame(wordEntry)
 
-  // Increment daily streak on win
+  // Increment daily streak on win + play result sound
   useEffect(() => {
     if (game.status === 'won') {
       const key = todayKey()
       localStorage.setItem(key, String(Number(localStorage.getItem(key) ?? 0) + 1))
+      playCorrect()
+    } else if (game.status === 'lost') {
+      playWrong()
     }
   }, [game.status])
 
@@ -52,7 +56,7 @@ export function Game({ topics, onHome }: Props) {
       }
       if (e.key === 'Enter')          handleSubmit()
       else if (e.key === 'Backspace') game.deleteLetter()
-      else if (/^[a-zA-Z]$/.test(e.key)) game.addLetter(e.key)
+      else if (/^[a-zA-Z]$/.test(e.key)) { game.addLetter(e.key); playTypeClick() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -96,7 +100,7 @@ export function Game({ topics, onHome }: Props) {
         <div className="mt-auto w-full max-w-md">
           <Keyboard
             keyState={keyState}
-            onLetter={game.addLetter}
+            onLetter={(l) => { game.addLetter(l); playTypeClick() }}
             onDelete={game.deleteLetter}
             onEnter={handleSubmit}
           />
