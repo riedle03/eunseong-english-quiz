@@ -1,0 +1,14 @@
+[
+  { "word": "GUITAR",  "emoji": "🎸", "sentence": "She plays the ___ in a band.",                     "korean": "기타",      "level": 2 },
+  { "word": "TROPHY",  "emoji": "🏆", "sentence": "He won a ___ at the competition.",                "korean": "트로피",    "level": 2 },
+  { "word": "CANVAS",  "emoji": "🎨", "sentence": "The artist painted on a large ___.",              "korean": "캔버스",    "level": 2 },
+  { "word": "MELODY",  "emoji": "🎵", "sentence": "I can't get that ___ out of my head.",            "korean": "멜로디",    "level": 2 },
+  { "word": "SKETCH",  "emoji": "✏️", "sentence": "She drew a quick ___ of the building.",          "korean": "스케치",    "level": 2 },
+  { "word": "NOVEL",   "emoji": "📚", "sentence": "He spent the weekend reading a ___.",             "korean": "소설",      "level": 2 },
+  { "word": "PUZZLE",  "emoji": "🧩", "sentence": "We put together a 1000-piece ___.",               "korean": "퍼즐",      "level": 2 },
+  { "word": "CONCERT", "emoji": "🎤", "sentence": "They went to a rock ___ last night.",             "korean": "콘서트",    "level": 2 },
+  { "word": "STADIUM", "emoji": "🏟️", "sentence": "Thousands of fans filled the ___.",              "korean": "경기장",    "level": 2 },
+  { "word": "COSTUME", "emoji": "👗", "sentence": "She wore a beautiful ___ to the party.",          "korean": "의상",      "level": 2 },
+  { "word": "PERFORM", "emoji": "🎭", "sentence": "The students will ___ on stage tonight.",         "korean": "공연하다",  "level": 3 },
+  { "word": "COMPETE", "emoji": "🥊", "sentence": "He trained hard to ___ in the finals.",           "korean": "경쟁하다",  "level": 3 }
+]

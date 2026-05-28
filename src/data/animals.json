@@ -1,0 +1,14 @@
+[
+  { "word": "PARROT",  "emoji": "🦜", "sentence": "The ___ can repeat everything you say.",              "korean": "앵무새",   "level": 2 },
+  { "word": "WHALE",   "emoji": "🐋", "sentence": "The blue ___ is the largest animal on Earth.",        "korean": "고래",     "level": 2 },
+  { "word": "JUNGLE",  "emoji": "🌴", "sentence": "Many exotic animals live in the ___.",                "korean": "정글",     "level": 2 },
+  { "word": "FALCON",  "emoji": "🦅", "sentence": "The ___ is one of the fastest birds in the world.",  "korean": "매",       "level": 2 },
+  { "word": "TURTLE",  "emoji": "🐢", "sentence": "The ___ walked slowly across the beach.",             "korean": "거북이",   "level": 2 },
+  { "word": "CACTUS",  "emoji": "🌵", "sentence": "A ___ can survive for months without water.",         "korean": "선인장",   "level": 2 },
+  { "word": "EAGLE",   "emoji": "🦅", "sentence": "The ___ soared high above the mountains.",            "korean": "독수리",   "level": 2 },
+  { "word": "CORAL",   "emoji": "🪸", "sentence": "Thousands of fish live near the ___ reef.",           "korean": "산호",     "level": 2 },
+  { "word": "PANDA",   "emoji": "🐼", "sentence": "The giant ___ only eats bamboo.",                     "korean": "판다",     "level": 2 },
+  { "word": "LEOPARD", "emoji": "🐆", "sentence": "The ___ is known for its spotted fur.",               "korean": "표범",     "level": 3 },
+  { "word": "DOLPHIN", "emoji": "🐬", "sentence": "A ___ is very intelligent and friendly.",             "korean": "돌고래",   "level": 2 },
+  { "word": "BAMBOO",  "emoji": "🎋", "sentence": "Giant pandas eat ___ all day long.",                  "korean": "대나무",   "level": 2 }
+]

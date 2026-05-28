@@ -1,0 +1,14 @@
+[
+  { "word": "PASSPORT", "emoji": "🛂", "sentence": "Don't forget your ___ when traveling abroad.",         "korean": "여권",        "level": 2 },
+  { "word": "LUGGAGE",  "emoji": "🧳", "sentence": "Please keep your ___ with you at all times.",          "korean": "수하물",      "level": 2 },
+  { "word": "FLIGHT",   "emoji": "✈️", "sentence": "Our ___ to Paris departs at 7 AM.",                   "korean": "비행/항공편", "level": 2 },
+  { "word": "CUSTOMS",  "emoji": "🏛️", "sentence": "You must declare your items at ___.",                  "korean": "세관",        "level": 2 },
+  { "word": "RESORT",   "emoji": "🏖️", "sentence": "They stayed at a luxury ___ by the beach.",           "korean": "리조트",      "level": 2 },
+  { "word": "TEMPLE",   "emoji": "⛩️", "sentence": "We visited an ancient ___ in Kyoto.",                 "korean": "사원/절",     "level": 2 },
+  { "word": "CRUISE",   "emoji": "🚢", "sentence": "They went on a Caribbean ___.",                        "korean": "크루즈",      "level": 2 },
+  { "word": "SOUVENIR", "emoji": "🎁", "sentence": "She bought a ___ to remember the trip.",               "korean": "기념품",      "level": 2 },
+  { "word": "LANDMARK", "emoji": "🗺️", "sentence": "The Eiffel Tower is a famous ___ in Paris.",          "korean": "명소",        "level": 2 },
+  { "word": "ABROAD",   "emoji": "🌍", "sentence": "She studied ___ for a semester.",                      "korean": "해외에",      "level": 2 },
+  { "word": "EXPLORE",  "emoji": "🔭", "sentence": "We decided to ___ the ancient ruins.",                 "korean": "탐험하다",    "level": 3 },
+  { "word": "JOURNEY",  "emoji": "🛤️", "sentence": "It was a long ___ across the ocean.",                 "korean": "여정/여행",   "level": 2 }
+]
