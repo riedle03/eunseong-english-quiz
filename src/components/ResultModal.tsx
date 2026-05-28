@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { GameStatus, WordEntry } from '../types'
 
 interface Props {
@@ -11,10 +11,15 @@ interface Props {
 export function ResultModal({ status, wordEntry, attempts, onNext }: Props) {
   const [copied, setCopied] = useState(false)
 
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+
   useEffect(() => {
     if (status === 'playing') return
+    audioRef.current?.pause()
     const audio = new Audio(`/audio/${wordEntry.word.toLowerCase()}.mp3`)
+    audioRef.current = audio
     audio.play().catch(() => {})
+    return () => { audio.pause() }
   }, [status, wordEntry.word])
 
   if (status === 'playing') return null
