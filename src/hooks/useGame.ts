@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { evaluateGuess } from '../utils/evaluateGuess'
 import type { GameStatus, LetterState, WordEntry } from '../types'
 
@@ -53,6 +53,17 @@ export function useGame(wordEntry: WordEntry) {
       return { ...s, guesses: newGuesses, evaluations: newEvaluations, currentGuess: '', status }
     })
   }, [])
+
+  // Reset game state when word changes
+  useEffect(() => {
+    setState({
+      wordEntry,
+      guesses: [],
+      evaluations: [],
+      currentGuess: '',
+      status: 'playing',
+    })
+  }, [wordEntry.word])
 
   return { ...state, addLetter, deleteLetter, submitGuess }
 }
