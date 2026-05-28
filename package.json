@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "build:audio": "tsx --env-file=.env.local scripts/build-audio.ts",
+    "build:audio:dry": "tsx --env-file=.env.local scripts/build-audio.ts --dry-run",
+    "build:audio:force": "tsx --env-file=.env.local scripts/build-audio.ts --force"
   },
   "dependencies": {
     "react": "^19.2.6",
@@ -30,6 +33,7 @@
     "jsdom": "^29.1.1",
     "postcss": "^8.5.15",
     "tailwindcss": "^3.4.19",
+    "tsx": "^4.22.3",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
