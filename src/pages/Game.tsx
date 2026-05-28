@@ -38,17 +38,25 @@ export function Game({ topics, onHome }: Props) {
     }
   }, [game, wordEntry.word.length])
 
+  const nextWord = useCallback(() => {
+    setWordEntry(getRandomWord(topics))
+  }, [topics])
+
   // Physical keyboard handler
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return
+      if (game.status !== 'playing') {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nextWord() }
+        return
+      }
       if (e.key === 'Enter')          handleSubmit()
       else if (e.key === 'Backspace') game.deleteLetter()
       else if (/^[a-zA-Z]$/.test(e.key)) game.addLetter(e.key)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [handleSubmit, game])
+  }, [handleSubmit, game, nextWord])
 
   const keyState = getKeyboardState(game.guesses, game.evaluations)
 
@@ -99,7 +107,7 @@ export function Game({ topics, onHome }: Props) {
         status={game.status}
         wordEntry={wordEntry}
         attempts={game.guesses.length}
-        onNext={() => setWordEntry(getRandomWord(topics))}
+        onNext={nextWord}
       />
     </div>
   )
