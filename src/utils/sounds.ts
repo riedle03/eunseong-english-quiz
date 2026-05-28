@@ -52,16 +52,20 @@ export function playCorrect(): void {
 export function playWrong(): void {
   try {
     const c = ctx()
-    const osc = c.createOscillator()
-    const gain = c.createGain()
-    osc.type = 'sawtooth'
-    osc.frequency.setValueAtTime(220, c.currentTime)
-    osc.frequency.exponentialRampToValueAtTime(80, c.currentTime + 0.35)
-    gain.gain.setValueAtTime(0.18, c.currentTime)
-    gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.35)
-    osc.connect(gain)
-    gain.connect(c.destination)
-    osc.start()
-    osc.stop(c.currentTime + 0.35)
+    const t = c.currentTime
+    const notes = [330, 277]
+    notes.forEach((freq, i) => {
+      const osc = c.createOscillator()
+      const gain = c.createGain()
+      osc.type = 'sine'
+      osc.frequency.value = freq
+      const start = t + i * 0.18
+      gain.gain.setValueAtTime(0.3, start)
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.28)
+      osc.connect(gain)
+      gain.connect(c.destination)
+      osc.start(start)
+      osc.stop(start + 0.28)
+    })
   } catch (_) {}
 }
